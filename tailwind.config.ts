@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import { custom } from "zod";
 
 export default {
 	darkMode: ["class"],
