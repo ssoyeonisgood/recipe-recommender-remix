@@ -1,7 +1,6 @@
 import { generateObject } from 'ai';
 import { openai } from '@ai-sdk/openai';
 import type { ActionFunction } from "@remix-run/node";
-import { json } from "@remix-run/node";
 import { Readable } from "stream";
 import { z } from 'zod';
 
@@ -23,14 +22,14 @@ const streamToBuffer = async (stream: Readable): Promise<Buffer> => {
 
 export const action: ActionFunction = async ({ request }) => {
   try {
-
+    console.log("Received request to analyze image");
     const formData = await request.formData();
     const file = formData.get("file");
 
     console.log("Form data received:", file);
 
     if (!file || !(file instanceof File)) {
-      return json({ error: "No file provided" }, { status: 400 });
+      return Response.json({ error: "No file provided" }, { status: 400 });
     }
 
     const fileBuffer = await streamToBuffer(file.stream() as unknown as Readable);
@@ -49,12 +48,12 @@ export const action: ActionFunction = async ({ request }) => {
         },
       ],
     });
-    return json({
+    return Response.json({
       success: true,
       ingredientLabels: result.object.ingredients
     });
   } catch (error) {
     console.error("fail to analyze ingredients:", error);
-    return json({ error: "Image analysis failed" }, { status: 500 });
+    return Response.json({ error: "Image analysis failed" }, { status: 500 });
   }
 }

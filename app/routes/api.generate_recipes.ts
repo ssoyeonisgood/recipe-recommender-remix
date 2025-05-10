@@ -1,7 +1,6 @@
 import { generateObject } from 'ai';
 import { openai } from '@ai-sdk/openai';
 import type { ActionFunction } from "@remix-run/node";
-import { json } from "@remix-run/node";
 import { z } from 'zod';
 
 const recipesSchema = z.object({
@@ -43,12 +42,12 @@ export const action: ActionFunction = async ({ request }) => {
                 }
             ]
         });
-        return json({
+        return Response.json({
             success: true,
             recipes: result.object.recipes
         });
     } catch (error) {
         console.error("Failed to generate recipe:", error);
-        return json({ error: "Failed to generate recipe" }, { status: 500 });
+        return Response.json({ error: "Failed to generate recipe" }, { status: 500 });
     }
 }
