@@ -11,9 +11,10 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "../components/ui/accordion"
+import { AiFillAlert } from "react-icons/ai";
 import { FcAlarmClock, FcReddit, FcTimeline } from "react-icons/fc";
 
-const AIResponse = ({ recipes, loadingRecipes }: { recipes: Recipe[]; loadingRecipes: boolean }) => {
+const AIResponse = ({ recipes, loadingRecipes, ingredients }: { recipes: Recipe[]; loadingRecipes: boolean; ingredients: string[] }) => {
     if (loadingRecipes) {
         return (
             <div>
@@ -34,13 +35,31 @@ const AIResponse = ({ recipes, loadingRecipes }: { recipes: Recipe[]; loadingRec
             </div>
         );
     }
-
-    // console.log("First recipe:", recipes[0].recipe.cookName);
-
-    if (recipes.length === 0) {
+    if (recipes.length === 0 && ingredients.length === 0) {
         return (
-            <div className="mt-10 h-full w-full">
-                <div>No recipes found yet.</div>
+            <div>
+                <DialogHeader>
+                    <DialogTitle className="flex flex-row items-center justify-center"><AiFillAlert className="text-red-700 text-2xl mr-2" />Please try to upload a picture of your ingredients again.<AiFillAlert className="text-red-700 text-2xl ml-2" /></DialogTitle>
+                    <DialogDescription className="flex justify-center">
+                        AI could not find any recipes based on your ingredients.
+                    </DialogDescription>
+                </DialogHeader>
+
+            </div>
+        );
+    }
+
+    if (recipes.length === 0 && ingredients.length > 0) {
+        return (
+            <div>
+                <DialogHeader>
+                    <DialogTitle className="flex flex-row items-center justify-center">No Recipes Found</DialogTitle>
+                    <DialogDescription className="flex justify-center">
+                        We couldn’t find any recipes matching your selected ingredients and cooking time.
+                        Try adjusting the cooking time or adding different ingredients to get better results.
+                    </DialogDescription>
+                </DialogHeader>
+
             </div>
         );
     }

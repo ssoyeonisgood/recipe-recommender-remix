@@ -74,15 +74,18 @@ const UserInput = () => {
     const onSearchClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         setLoadingRecipes(true);
+        setRecipes([]);
         setIsDialogOpen(true);
 
         if (ingredients.length === 0) {
             console.error("No ingredients to search for.");
+            setLoadingRecipes(false);
             return;
         }
 
         const formData = new FormData();
         formData.append("ingredients", JSON.stringify(ingredients));
+        console.log(ingredients);
         formData.append("cookingTime", cookingTime);
 
         try {
@@ -175,7 +178,7 @@ const UserInput = () => {
                         <Button className="bg-red-600 mt-auto sm:w-56 w-full" onClick={onSearchClick}>Search</Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-3xl sm:h-[90%] w-full h-full">
-                        <AIResponse recipes={recipes} loadingRecipes={loadingRecipes} />
+                        <AIResponse recipes={recipes} loadingRecipes={loadingRecipes} ingredients={ingredients} />
                     </DialogContent>
                 </Dialog>
             </div>

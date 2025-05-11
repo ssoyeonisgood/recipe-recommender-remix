@@ -2,7 +2,7 @@ import { Badge } from "../components/ui/badge"
 
 type IngredientBadgeProps = {
     ingredientName: string;
-    onRemove?: () => void; // optional: 클릭 시 처리할 함수
+    onRemove?: () => void;
 };
 
 const IngerdientBadge = ({ ingredientName, onRemove }: IngredientBadgeProps) => {
