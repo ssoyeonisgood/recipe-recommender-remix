@@ -17,6 +17,7 @@ import { useRef, useState } from "react";
 import { Recipe } from "~/routes/_index";
 import { CiImageOn } from "react-icons/ci";
 import AIResponse from "./AIResponse";
+import { compressFile } from "~/lib/utils";
 
 const UserInput = () => {
   const [cookingTime, setCookingTime] = useState("30min");
@@ -46,8 +47,9 @@ const UserInput = () => {
     const fileInput = fileInputRef.current;
 
     if (fileInput?.files && fileInput.files[0]) {
-      formData.append("file", fileInput.files[0]);
-      // console.log("File added to formData:", formData.get('file'));
+      const originalFile = fileInput.files[0];
+      const compressedFile = await compressFile(originalFile);
+      formData.append("file", compressedFile);
 
       try {
         const response = await fetch("/api/analyze_image", {
