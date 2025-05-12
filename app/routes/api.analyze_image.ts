@@ -35,7 +35,7 @@ export const action: ActionFunction = async ({ request }) => {
     const fileBuffer = await streamToBuffer(file.stream() as unknown as Readable);
 
     const result = await generateObject({
-      model: openai('gpt-4-turbo'),
+      model: openai('gpt-4.1-mini'),
       schema: ingredientSchema,
       system: 'You are a professional chef. Analyze the given image and extract a list of food ingredients.',
       messages: [
@@ -53,7 +53,7 @@ export const action: ActionFunction = async ({ request }) => {
       ingredientLabels: result.object.ingredients
     });
   } catch (error) {
-    console.error("fail to analyze ingredients:", error);
+    console.error("fail to analyze ingredients:", error instanceof Error ? error.stack : error);
     return Response.json({ error: "Image analysis failed" }, { status: 500 });
   }
 }
