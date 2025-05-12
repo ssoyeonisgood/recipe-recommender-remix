@@ -143,42 +143,35 @@ const UserInput = () => {
         <div className="flex flex-col gap-2 sm:w-1/2 sm:h-full h-[40%]">
           <div className="h-full w-full flex flex-col gap-1">
             <Label htmlFor="ingredients">Ingredients</Label>
-            {loadingBadges ? (
-              <div className="h-full bg-white rounded-xl p-4 space-y-2 shadow-md">
-                <Skeleton className="h-8 w-2/3" />
-                <Skeleton className="h-6 w-full" />
-                <Skeleton className="h-6 w-full" />
-                <Skeleton className="h-6 w-1/2 sm:visible hidden" />
-                <Skeleton className="h-6 w-2/3 sm:visible hidden" />
-                <Skeleton className="h-6 w-full sm:visible hidden" />
+            <div
+              id="ingredients"
+              className=" bg-orange-200 rounded-xl p-4 overflow-auto flex flex-wrap gap-2"
+            >
+              <div className="flex flex-wrap gap-2 overflow-auto sm:max-h-[350px] max-h-[100px]">
+                {loadingBadges &&
+                  Array.from({ length: 8 }).map((_, index) => (
+                    <Skeleton key={index} className="h-8 w-20" />
+                  ))}
+                {ingredients.length > 0 && !loadingBadges ? (
+                  ingredients.map((ingredient) => (
+                    <IngredientBadge
+                      key={ingredient}
+                      ingredientName={ingredient}
+                      onRemove={() =>
+                        setIngredients(
+                          ingredients.filter((i) => i !== ingredient)
+                        )
+                      }
+                    />
+                  ))
+                ) : (
+                  <p className="text-gray-700 font-custom">
+                    No ingredients recognized. Try uploading your image of
+                    ingredients
+                  </p>
+                )}
               </div>
-            ) : (
-              <div
-                id="ingredients"
-                className=" bg-orange-200 rounded-xl p-4 overflow-auto flex flex-wrap gap-2"
-              >
-                <div className="flex flex-wrap gap-2 overflow-auto sm:max-h-[350px] max-h-[100px]">
-                  {ingredients.length > 0 ? (
-                    ingredients.map((ingredient) => (
-                      <IngredientBadge
-                        key={ingredient}
-                        ingredientName={ingredient}
-                        onRemove={() =>
-                          setIngredients(
-                            ingredients.filter((i) => i !== ingredient)
-                          )
-                        }
-                      />
-                    ))
-                  ) : (
-                    <p className="text-gray-700 font-custom">
-                      No ingredients recognized. Try uploading your image of
-                      ingredients
-                    </p>
-                  )}
-                </div>
-              </div>
-            )}
+            </div>
           </div>
           <div id="cooking-time" className="flex flex-col">
             <Label htmlFor="cookingTime" className="mb-2">
