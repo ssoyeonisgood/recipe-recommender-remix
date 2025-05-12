@@ -18,9 +18,10 @@ import { Recipe } from "~/routes/_index";
 import { CiImageOn } from "react-icons/ci";
 import AIResponse from "./AIResponse";
 import { compressFile } from "~/lib/utils";
+import { cookingTimeOptions } from "~/lib/values";
 
 const UserInput = () => {
-  const [cookingTime, setCookingTime] = useState("30min");
+  const [cookingTime, setCookingTime] = useState(cookingTimeOptions[0].value);
   const [ingredients, setIngredients] = useState<string[]>([]);
   const [loadingBadges, setLoadingBadges] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string>();
@@ -194,18 +195,14 @@ const UserInput = () => {
                   value={cookingTime}
                   onValueChange={setCookingTime}
                 >
-                  <DropdownMenuRadioItem value="30min">
-                    Less than 30 minutes
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="1hour">
-                    Less than 1 hour
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="2hours">
-                    Less than 2 hours
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="no-preference">
-                    No preference
-                  </DropdownMenuRadioItem>
+                  {cookingTimeOptions.map((option) => (
+                    <DropdownMenuRadioItem
+                      key={option.value}
+                      value={option.value}
+                    >
+                      {option.label}
+                    </DropdownMenuRadioItem>
+                  ))}
                 </DropdownMenuRadioGroup>
               </DropdownMenuContent>
             </DropdownMenu>
