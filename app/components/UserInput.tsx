@@ -148,18 +148,18 @@ const UserInput = () => {
               className=" bg-orange-200 rounded-xl p-4 overflow-auto flex flex-wrap gap-2"
             >
               <div className="flex flex-wrap gap-2 overflow-auto sm:max-h-[350px] max-h-[100px]">
-                {loadingBadges &&
+                {loadingBadges ? (
                   Array.from({ length: 8 }).map((_, index) => (
                     <Skeleton key={index} className="h-8 w-20" />
-                  ))}
-                {ingredients.length > 0 && !loadingBadges ? (
+                  ))
+                ) : ingredients.length > 0 ? (
                   ingredients.map((ingredient) => (
                     <IngredientBadge
                       key={ingredient}
                       ingredientName={ingredient}
                       onRemove={() =>
-                        setIngredients(
-                          ingredients.filter((i) => i !== ingredient)
+                        setIngredients((prev) =>
+                          prev.filter((i) => i !== ingredient)
                         )
                       }
                     />
@@ -167,7 +167,7 @@ const UserInput = () => {
                 ) : (
                   <p className="text-gray-700 font-custom">
                     No ingredients recognized. Try uploading your image of
-                    ingredients
+                    ingredients.
                   </p>
                 )}
               </div>
