@@ -18,7 +18,7 @@ const recipesSchema = z.object({
         steps: z.array(z.string()),
       })
     )
-    .max(5),
+    .max(3),
 });
 
 export const action: ActionFunction = async ({ request }) => {
@@ -33,7 +33,7 @@ export const action: ActionFunction = async ({ request }) => {
       model: openai("gpt-4.1-mini"),
       schema: recipesSchema,
       maxTokens: 1024,
-      system: `You are a professional chef. You return max 5 recipes in JSON format that match the schema. Do not include any extra text.
+      system: `You are a professional chef. You return max 3 recipes in JSON format that match the schema. Do not include any extra text.
 
             `,
       messages: [
@@ -42,7 +42,7 @@ export const action: ActionFunction = async ({ request }) => {
           content: [
             {
               type: "text",
-              text: `Based on the ingredients below give me 5 or less recipes. 
+              text: `Based on the ingredients below give me 3 or less recipes. 
                 It should be cooked within ${cookingTime} using these ingredients.
                 
                 ${ingredients.join("\n")}`,
