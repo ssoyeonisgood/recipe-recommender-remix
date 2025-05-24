@@ -25,8 +25,6 @@ export const action: ActionFunction = async ({ request }) => {
   try {
     const formData = await request.formData();
     const ingredientsJson = formData.get("ingredients") as string;
-    const cookingTime = formData.get("cookingTime") as string;
-
     const ingredients = JSON.parse(ingredientsJson);
 
     const result = await generateObject({
@@ -43,7 +41,7 @@ export const action: ActionFunction = async ({ request }) => {
             {
               type: "text",
               text: `Based on the ingredients below give me 3 or less recipes. 
-                It should be cooked within ${cookingTime} using these ingredients.
+                It should be cooked using these ingredients.
                 
                 ${ingredients.join("\n")}`,
             },

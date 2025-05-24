@@ -5,23 +5,14 @@ import { Label } from "../components/ui/label";
 import IngredientBadge from "./IngredientBadge";
 import { Skeleton } from "../components/ui/skeleton";
 import { Button } from "./ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuTrigger,
-} from "../components/ui/dropdown-menu";
 import { Dialog, DialogContent, DialogTrigger } from "../components/ui/dialog";
 import { useRef, useState } from "react";
 import { Recipe } from "~/routes/_index";
 import { CiImageOn } from "react-icons/ci";
 import AIResponse from "./AIResponse";
 import { compressFile } from "~/lib/utils";
-import { cookingTimeOptions } from "~/lib/values";
 
 const UserInput = () => {
-  const [cookingTime, setCookingTime] = useState(cookingTimeOptions[0].value);
   const [ingredients, setIngredients] = useState<string[]>([]);
   const [loadingBadges, setLoadingBadges] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string>();
@@ -89,7 +80,6 @@ const UserInput = () => {
     const formData = new FormData();
     formData.append("ingredients", JSON.stringify(ingredients));
     console.log(ingredients);
-    formData.append("cookingTime", cookingTime);
 
     try {
       const response = await fetch("/api/generate_recipes", {
@@ -145,9 +135,9 @@ const UserInput = () => {
             <Label htmlFor="ingredients">Ingredients</Label>
             <div
               id="ingredients"
-              className=" bg-orange-200 rounded-xl p-4 overflow-auto flex flex-wrap gap-2"
+              className=" bg-orange-200 rounded-xl p-4 overflow-auto flex flex-wrap gap-2 h-full w-full"
             >
-              <div className="flex flex-wrap gap-2 overflow-auto sm:max-h-[350px] max-h-[100px]">
+              <div className="flex flex-wrap items-start content-start gap-2 overflow-auto h-full w-full">
                 {loadingBadges ? (
                   Array.from({ length: 8 }).map((_, index) => (
                     <Skeleton key={index} className="h-8 w-20" />
@@ -172,33 +162,6 @@ const UserInput = () => {
                 )}
               </div>
             </div>
-          </div>
-          <div id="cooking-time" className="flex flex-col">
-            <Label htmlFor="cookingTime" className="mb-2">
-              Cooking Time
-            </Label>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button className="bg-orange-400 text-white">
-                  {cookingTime}
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56">
-                <DropdownMenuRadioGroup
-                  value={cookingTime}
-                  onValueChange={setCookingTime}
-                >
-                  {cookingTimeOptions.map((option) => (
-                    <DropdownMenuRadioItem
-                      key={option.value}
-                      value={option.value}
-                    >
-                      {option.label}
-                    </DropdownMenuRadioItem>
-                  ))}
-                </DropdownMenuRadioGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
           </div>
         </div>
       </div>
