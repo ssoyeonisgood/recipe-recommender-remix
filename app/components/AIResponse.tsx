@@ -73,9 +73,8 @@ const AIResponse = ({
           </DialogTitle>
           <DialogDescription className="flex items-center justify-center text-center">
             We couldn&apos;t find any recipes matching your selected ingredients
-            and cooking time. <br />
-            Try adjusting the cooking time or uploading a clearer image to get
-            better results.
+            <br />
+            Try uploading a clearer image to get better results.
           </DialogDescription>
         </DialogHeader>
       </div>
@@ -92,8 +91,8 @@ const AIResponse = ({
       <DialogDescription>
         We found{" "}
         <span className="text-red-600 font-semibold">{recipes.length}</span>{" "}
-        recipe{recipes.length !== 1 ? "s" : ""} based on your ingredients and
-        cooking time. <br />
+        recipe{recipes.length !== 1 ? "s" : ""} based on your ingredients.
+        <br />
         Try making one using the ingredients you provided!
       </DialogDescription>
       <div className="flex flex-wrap p-2 overflow-auto">
