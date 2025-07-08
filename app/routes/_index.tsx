@@ -1,5 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
-import UserInput from "~/components/UserInput";
+import { Link } from "@remix-run/react";
+// import UserInput from "~/components/UserInput";
+import { motion } from "framer-motion";
 
 export const meta: MetaFunction = () => {
   return [
@@ -11,23 +13,32 @@ export const meta: MetaFunction = () => {
 export interface Recipe {
   cookName: string;
   cookingTime: string;
-  ingredients: { amount: string; name: string; }[];
+  ingredients: { amount: string; name: string }[];
   steps: string[];
-
 }
-
 
 export default function Index() {
   return (
-    <main className="flex h-screen flex-col bg-white bg-cover bg-center">
-      <div className="flex justify-center items-center h-full">
-        <div className="bg-orange-100/70 border-dashed border-8 rounded-3xl sm:h-[90%] h-[95%] sm:w-4/5 w-[95%] flex justify-center items-center flex-col sm:gap-10 sm:p-10 p-5 gap-2">
-          <div className="flex justify-center items-center flex-col gap-2">
-            <h1 className="font-custom sm:text-6xl text-2xl font-bold text-center">Recipe Recommender</h1>
-            <p className="text-gray-700 font-custom text-center text-sm sm:text-xl">Upload a picture of your ingredients and get recipe recommendations!</p>
+    <main className="flex h-screen flex-col">
+      <div>
+        <div className="relative bg-[url('/plate.png')] bg-cover bg-center h-screen">
+          <nav className="fixed top-0 left-0 right-0 z-10 p-4 flex justify-between items-center">
+            <Link to="/">
+              <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
+            </Link>
+          </nav>
+          <div className="flex flex-col items-center justify-center text-center h-full bg-black bg-opacity-50">
+            <motion.h1
+              className="text-8xl text-pink-400 font-bold font-title mb-4"
+              initial={{ x: -200, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              Recipe Recommender
+            </motion.h1>
           </div>
-          <UserInput />
         </div>
+        <div className="flex flex-col items-center justify-center h-full bg-blue-950"></div>
       </div>
     </main>
   );
