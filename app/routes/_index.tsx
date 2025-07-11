@@ -1,7 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 // import UserInput from "~/components/UserInput";
 import HomePage from "~/components/homePage";
-import Introduction from "~/components/introduction";
+import AboutSection from "~/components/aboutSection";
 import Navigation from "~/components/navigation";
 
 export const meta: MetaFunction = () => {
@@ -22,9 +22,9 @@ export default function Index() {
   return (
     <main className="flex h-screen flex-col">
       <div className="bg-[url('/plate.png')] bg-cover bg-center h-screen">
-        <Navigation />
+        <Navigation logoImage="/logo.png" textColor="text-white" />
         <HomePage />
-        <Introduction />
+        <AboutSection />
       </div>
     </main>
   );

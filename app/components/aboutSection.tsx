@@ -1,15 +1,19 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "@remix-run/react";
 
-const Introduction = () => {
+const AboutSection = () => {
   const titleRef = useRef(null);
   const isTitleInView = useInView(titleRef, { once: true });
 
-  const buttonClass =
-    "relative w-full max-w-[460px] bg-pink-600 text-white font-custom text-base md:text-xl font-bold px-6 md:px-12 py-3 flex justify-center items-center leading-7 transform -rotate-2 cursor-pointer select-none after:content-[''] after:absolute after:border-2 after:border-white after:bottom-1 after:left-1 after:w-[calc(100%-1px)] after:h-[calc(100%-1px)] hover:after:bottom-[2px] hover:after:left-[2px]";
+  const buttonClass = (bgColor: string) =>
+    `relative w-full max-w-[460px] ${bgColor} text-white font-custom text-base md:text-xl font-bold px-6 md:px-12 py-3 flex justify-center items-center leading-7 transform -rotate-2 cursor-pointer select-none after:content-[''] after:absolute after:border-2 after:border-white after:bottom-1 after:left-1 after:w-[calc(100%-1px)] after:h-[calc(100%-1px)] hover:after:bottom-[2px] hover:after:left-[2px]`;
 
   return (
-    <div className="flex flex-row gap-10 p-20 items-center justify-center h-full bg-blue-950">
+    <section
+      id="about"
+      className="flex flex-row gap-10 p-20 items-center justify-center h-full bg-blue-950"
+    >
       <div className="w-1/2 h-full flex items-center justify-center">
         <p
           ref={titleRef}
@@ -54,8 +58,14 @@ const Introduction = () => {
           a smooth user experience with powerful AI-driven recipe
           recommendations.
         </p>
-        <div className="w-full h-60 relative mt-10 flex flex-row gap-4">
+        <div className="w-full h-60 relative mt-5 flex flex-row gap-4">
           <div className="w-3/5 flex flex-col mt-3 gap-6">
+            <p className="font-custom text-white text-2xl font-semibold">
+              Ready to try the Recipe Recommender?
+            </p>
+            <Link to="/getRecipes" className={buttonClass("bg-pink-600")}>
+              Try it now!!
+            </Link>
             <p className="font-custom text-white text-2xl font-semibold">
               Do you want to see my code?
             </p>
@@ -63,7 +73,7 @@ const Introduction = () => {
               href="https://github.com/ssoyeonisgood/recipe-recommender-remix"
               target="_blank"
               rel="noopener noreferrer"
-              className={buttonClass}
+              className={buttonClass("bg-blue-600")}
             >
               Go to my repo
             </a>
@@ -82,8 +92,8 @@ const Introduction = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Introduction;
+export default AboutSection;
