@@ -7,7 +7,7 @@ const AboutSection = () => {
   const isTitleInView = useInView(titleRef, { once: true });
 
   const buttonClass = (bgColor: string) =>
-    `relative w-full h-10 sm:h-20 max-w-[460px] ${bgColor} text-white font-custom text-base md:text-xl font-bold px-6 md:px-12 py-3 flex justify-center items-center leading-7 transform -rotate-2 cursor-pointer select-none after:content-[''] after:absolute after:border-2 after:border-white after:bottom-1 after:left-1 after:w-[calc(100%-1px)] after:h-[calc(100%-1px)] hover:after:bottom-[2px] hover:after:left-[2px]`;
+    `relative w-full h-10 xxl:text-5xl xxl:h-full sm:h-20 max-w-[460px] ${bgColor} text-white font-custom text-base md:text-xl font-bold px-6 md:px-12 py-3 flex justify-center items-center leading-7 transform -rotate-2 cursor-pointer select-none after:content-[''] after:absolute after:border-2 after:border-white after:bottom-1 after:left-1 after:w-[calc(100%-1px)] after:h-[calc(100%-1px)] hover:after:bottom-[2px] hover:after:left-[2px]`;
 
   return (
     <section
@@ -17,7 +17,7 @@ const AboutSection = () => {
       <div className="xl:w-1/2 xl:h-full flex items-center justify-center">
         <p
           ref={titleRef}
-          className="font-title text-2xl md:text-3xl xl:text-6xl text-pink-400 font-bold flex flex-col items-center justify-center gap-2 xl:gap-8"
+          className="font-title text-xxl md:text-3xl xl:text-6xl text-pink-400 font-bold flex flex-col items-center justify-center gap-2 xl:gap-8 xxl:text-9xl"
         >
           Hello! This is
           <motion.span
@@ -26,29 +26,29 @@ const AboutSection = () => {
               isTitleInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0 }
             }
             transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
-            className="text-white text-3xl md:text-5xl xl:text-8xl text-center"
+            className="text-white text-3xl md:text-5xl xl:text-8xl text-center xxl:text-[200px]"
           >
             Recipe Recommender,
           </motion.span>
           an AI web app.
         </p>
       </div>
-      <div className="xl:w-1/2 h-full gap-4 sm:gap-6 flex flex-col items-center relative overflow-auto">
+      <div className="xl:w-1/2 h-full gap-4 sm:gap-6 flex flex-col xl:justify-center items-center relative overflow-auto xxl:gap-20">
         <div className="w-full relative">
           <img
             src="/sticker1.png"
             alt="sticker1"
-            className="hidden xl:block w-40 z-10 relative top-0 left-0 rotate-[10deg] transform transition-transform duration-500 hover:rotate-[-10deg] hover:scale-105"
+            className="xxl:w-80  hidden xl:block w-40 z-10 relative top-0 left-0 rotate-[10deg] transform transition-transform duration-500 hover:rotate-[-10deg] hover:scale-105"
           />
         </div>
-        <p className="font-custom text-white text-lg sm:text-2xl font-semibold z-10 relative">
+        <p className="font-custom text-white text-lg sm:text-xxl font-semibold z-10 relative xxl:text-6xl">
           This app uses AI to recommend recipes based on the ingredients you
           provide. You can upload an image of your ingredients, and the AI will
           recognize them and suggest recipes that you can cook with those
           ingredients. It&apos;s a fun and interactive way to discover new
           recipes and make the most out of what you have in your kitchen!
         </p>
-        <p className="font-custom text-white text-lg sm:text-2xl font-semibold">
+        <p className="font-custom text-white text-lg sm:text-xxl font-semibold xxl:text-6xl">
           This web app is built using{" "}
           <span className="text-pink-500 font-bold">TypeScript</span>,{" "}
           <span className="text-pink-500 font-bold">Remix</span>, and the{" "}
@@ -58,15 +58,15 @@ const AboutSection = () => {
           a smooth user experience with powerful AI-driven recipe
           recommendations.
         </p>
-        <div className="w-full h-60 relative flex flex-row gap-4 justify-center">
+        <div className="w-full xxl:h-96 h-60 relative flex flex-row gap-4 justify-center">
           <div className="lg:w-3/5 flex flex-col gap-3 sm:gap-6">
-            <p className="font-custom text-white text-lg sm:text-2xl font-semibold">
+            <p className="font-custom text-white text-lg sm:text-xxl font-semibold xxl:text-6xl">
               Ready to try the Recipe Recommender?
             </p>
             <Link to="/getRecipes" className={buttonClass("bg-pink-600")}>
               Try it now!!
             </Link>
-            <p className="font-custom text-white text-lg sm:text-2xl font-semibold">
+            <p className="font-custom text-white text-lg sm:text-xxl font-semibold xxl:text-6xl">
               Do you want to see my code?
             </p>
             <a
@@ -82,12 +82,12 @@ const AboutSection = () => {
             <img
               src="/sticker2.png"
               alt="sticker2"
-              className="hidden lg:block w-40 absolute top-0 right-36 rotate-[-10deg] z-20"
+              className="xxl:w-80 xxl:right-80 hidden lg:block w-40 absolute top-0 right-36 rotate-[-10deg] z-20"
             />
             <img
               src="/sticker3.png"
               alt="sticker3"
-              className=" hidden lg:block w-40 absolute top-12 right-10 rotate-[12deg] z-30 transform transition-transform duration-500 hover:rotate-[-10deg] hover:scale-105"
+              className="xxl:w-80 hidden lg:block w-40 absolute top-12 right-10 rotate-[12deg] z-30 transform transition-transform duration-500 hover:rotate-[-10deg] hover:scale-105"
             />
           </div>
         </div>

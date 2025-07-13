@@ -10,10 +10,14 @@ const Navigation = ({
   return (
     <nav className="fixed left-0 right-0 top-0 z-10 flex items-center justify-between p-2 sm:p-4">
       <Link to="/">
-        <img src={logoImage} alt="Logo" className="h-5 w-auto sm:h-7 md:h-10" />
+        <img
+          src={logoImage}
+          alt="Logo"
+          className="xxl:h-28 h-5 w-auto sm:h-7 md:h-10"
+        />
       </Link>
       <div
-        className={`flex flex-row gap-3 md:gap-10 ${textColor} mr-2 font-title text-lg sm:text-2xl md:mr-10 md:text-3xl`}
+        className={`flex flex-row gap-3 md:gap-10 ${textColor} sm:text-xxl xxl:text-8xl mr-2 font-title text-lg md:mr-10 md:text-3xl`}
       >
         <Link to="/#about">
           <p>About</p>

@@ -48,7 +48,7 @@ const BadgeBoard = ({
       <div className="flex h-full w-full flex-col gap-2">
         <Label
           htmlFor="ingredients"
-          className="font-custom text-base font-semibold sm:text-lg"
+          className="xxl:text-5xl font-custom text-base font-semibold sm:text-lg"
         >
           Ingredients
         </Label>
@@ -74,20 +74,20 @@ const BadgeBoard = ({
                 />
               ))
             ) : (
-              <p className="font-custom text-gray-700">
+              <p className="xxl:text-5xl xxl:p-4 font-custom text-gray-700">
                 No ingredients recognized. Try uploading your image of
                 ingredients.
               </p>
             )}
           </div>
         </div>
-        <div className="flex h-10 flex-row gap-2 text-sm">
+        <div className="xxl:h-40 flex h-10 flex-row gap-2 text-sm">
           <Textarea
             placeholder="Add ingredients manually (optional)"
             value={manualInput}
             onChange={(e) => setManualInput(e.target.value)}
           />
-          <Button className="h-full" onClick={handleAddIngredient}>
+          <Button className="xxl:text-5xl h-full" onClick={handleAddIngredient}>
             Add
           </Button>
         </div>

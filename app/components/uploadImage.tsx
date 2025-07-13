@@ -65,7 +65,7 @@ const UploadImage = ({
     <div className="flex flex-col gap-2 sm:h-full sm:w-2/5">
       <Label
         htmlFor="picture"
-        className="font-custom text-base font-semibold sm:text-lg"
+        className="xxl:text-5xl font-custom text-base font-semibold sm:text-lg"
       >
         Picture
       </Label>
@@ -74,7 +74,7 @@ const UploadImage = ({
         accept="image/*"
         id="picture"
         type="file"
-        className="cursor-pointer border-2 border-black hover:bg-black/10"
+        className="xxl:h-20 cursor-pointer border-2 border-black hover:bg-black/10"
         onChange={handleImageChange}
       />
       <div className="hidden h-full flex-col items-center justify-center gap-2 rounded-xl border-2 border-black p-1 text-5xl sm:flex sm:p-4">
@@ -82,13 +82,16 @@ const UploadImage = ({
           <img
             src={selectedImage}
             alt="Selected"
-            className="max-h-[190px] w-auto rounded-xl object-contain sm:max-h-[350px]"
+            className="w-auto rounded-xl object-contain"
           />
         ) : (
           <CiImageOn />
         )}
       </div>
-      <Button className="w-full" onClick={onImageAnalyzeClick}>
+      <Button
+        className="xxl:text-5xl xxl:h-36 w-full"
+        onClick={onImageAnalyzeClick}
+      >
         Recognize
       </Button>
     </div>

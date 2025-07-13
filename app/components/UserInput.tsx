@@ -75,13 +75,13 @@ const UserInput = () => {
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button
-              className="button-19 h-12 w-full sm:w-60"
+              className="button-19 xxl:h-28 xxl:w-1/5 xxl:text-5xl h-12 w-full sm:w-60"
               onClick={onSearchClick}
             >
               Search
             </Button>
           </DialogTrigger>
-          <DialogContent className="h-full w-full sm:h-[90%] sm:max-w-3xl">
+          <DialogContent className="xxl:max-w-[2000px] xxl:h-[90%] h-full w-full sm:max-w-3xl">
             <AIResponse
               recipes={recipes}
               loadingRecipes={loadingRecipes}

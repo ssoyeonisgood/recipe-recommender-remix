@@ -8,9 +8,7 @@ export default {
       screens: {
         xs: { raw: "(max-height: 900px) and (max-width: 500px)" },
         xxs: { raw: "(max-height: 700px) and (max-width: 400px)" },
-        customRange: {
-          raw: "(min-height: 501px) and (min-width: 1001px) and (max-width: 1299px)",
-        },
+        xxl: { raw: "( min-width: 3500px)" },
       },
       fontFamily: {
         sans: [
