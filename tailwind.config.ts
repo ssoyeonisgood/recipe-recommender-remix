@@ -5,6 +5,13 @@ export default {
   content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      screens: {
+        xs: { raw: "(max-height: 900px) and (max-width: 500px)" },
+        xxs: { raw: "(max-height: 700px) and (max-width: 400px)" },
+        customRange: {
+          raw: "(min-height: 501px) and (min-width: 1001px) and (max-width: 1299px)",
+        },
+      },
       fontFamily: {
         sans: [
           "Inter",

@@ -54,7 +54,7 @@ const BadgeBoard = ({
         </Label>
         <div
           id="ingredients"
-          className="flex h-60 w-full flex-wrap gap-2 overflow-auto rounded-xl bg-blue-300 p-4 sm:h-full"
+          className="xxs:h-28 xs:h-48 flex h-60 w-full flex-wrap gap-2 overflow-auto rounded-xl bg-blue-300 p-4 sm:h-full"
         >
           <div className="flex h-full w-full flex-wrap content-start items-start gap-2 overflow-auto">
             {loadingBadges ? (
@@ -81,7 +81,7 @@ const BadgeBoard = ({
             )}
           </div>
         </div>
-        <div className="flex flex-row gap-2">
+        <div className="flex h-10 flex-row gap-2 text-sm">
           <Textarea
             placeholder="Add ingredients manually (optional)"
             value={manualInput}

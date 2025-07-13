@@ -54,14 +54,14 @@ const SeletCuisineType = ({
     },
   ];
   return (
-    <div className="flex h-48 flex-col gap-2 sm:h-full sm:w-1/5">
+    <div className="xxs:h-28 flex h-48 flex-col gap-2 sm:h-full sm:w-1/5">
       <Label
         htmlFor="cuisine"
         className="font-custom text-base font-semibold sm:text-lg"
       >
         Cuisine
       </Label>
-      <ScrollArea className="w-full rounded-md border-2 border-black p-4 sm:h-[430px]">
+      <ScrollArea className="xxs:p-1 customRange:h-[190px] w-full rounded-md border-2 border-black p-4 sm:h-[430px]">
         {itemData.map((item) => (
           <div key={item.title}>
             {/* mobile*/}

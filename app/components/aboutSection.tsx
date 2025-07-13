@@ -7,7 +7,7 @@ const AboutSection = () => {
   const isTitleInView = useInView(titleRef, { once: true });
 
   const buttonClass = (bgColor: string) =>
-    `relative w-full max-w-[460px] ${bgColor} text-white font-custom text-base md:text-xl font-bold px-6 md:px-12 py-3 flex justify-center items-center leading-7 transform -rotate-2 cursor-pointer select-none after:content-[''] after:absolute after:border-2 after:border-white after:bottom-1 after:left-1 after:w-[calc(100%-1px)] after:h-[calc(100%-1px)] hover:after:bottom-[2px] hover:after:left-[2px]`;
+    `relative w-full h-10 sm:h-20 max-w-[460px] ${bgColor} text-white font-custom text-base md:text-xl font-bold px-6 md:px-12 py-3 flex justify-center items-center leading-7 transform -rotate-2 cursor-pointer select-none after:content-[''] after:absolute after:border-2 after:border-white after:bottom-1 after:left-1 after:w-[calc(100%-1px)] after:h-[calc(100%-1px)] hover:after:bottom-[2px] hover:after:left-[2px]`;
 
   return (
     <section
@@ -17,7 +17,7 @@ const AboutSection = () => {
       <div className="xl:w-1/2 xl:h-full flex items-center justify-center">
         <p
           ref={titleRef}
-          className="font-title text-4xl md:text-5xl xl:text-6xl text-pink-400 font-bold flex flex-col items-center justify-center gap-2 xl:gap-8"
+          className="font-title text-2xl md:text-3xl xl:text-6xl text-pink-400 font-bold flex flex-col items-center justify-center gap-2 xl:gap-8"
         >
           Hello! This is
           <motion.span
@@ -26,7 +26,7 @@ const AboutSection = () => {
               isTitleInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0 }
             }
             transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
-            className="text-white text-5xl md:text-7xl xl:text-8xl text-center"
+            className="text-white text-3xl md:text-5xl xl:text-8xl text-center"
           >
             Recipe Recommender,
           </motion.span>
