@@ -15,6 +15,7 @@ const UserInput = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [loadingRecipes, setLoadingRecipes] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedCuisine, setSelectedCuisine] = useState<string | null>(null);
 
   const onSearchClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -30,7 +31,9 @@ const UserInput = () => {
 
     const formData = new FormData();
     formData.append("ingredients", JSON.stringify(ingredients));
-    console.log(ingredients);
+    formData.append("selectedCuisine", selectedCuisine || ""); // Ensure selectedCuisine is included
+    console.log("Selected cuisine:", selectedCuisine);
+    console.log("Ingredients to search for:", ingredients);
 
     try {
       const response = await fetch("/api/generate_recipes", {
@@ -63,7 +66,10 @@ const UserInput = () => {
           setIngredients={setIngredients}
           loadingBadges={loadingBadges}
         />
-        <SeletCuisineType />
+        <SeletCuisineType
+          setSelectedCuisine={setSelectedCuisine}
+          selectedCuisine={selectedCuisine}
+        />
       </div>
       <div className="flex justify-center items-center">
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -80,6 +86,7 @@ const UserInput = () => {
               recipes={recipes}
               loadingRecipes={loadingRecipes}
               ingredients={ingredients}
+              selectedCuisine={selectedCuisine || ""}
             />
           </DialogContent>
         </Dialog>

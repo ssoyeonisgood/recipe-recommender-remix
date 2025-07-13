@@ -18,7 +18,7 @@ const recipesSchema = z.object({
         steps: z.array(z.string()),
       })
     )
-    .max(3),
+    .max(2),
 });
 
 export const action: ActionFunction = async ({ request }) => {
@@ -26,21 +26,21 @@ export const action: ActionFunction = async ({ request }) => {
     const formData = await request.formData();
     const ingredientsJson = formData.get("ingredients") as string;
     const ingredients = JSON.parse(ingredientsJson);
+    const selectedCuisine = formData.get("selectedCuisine") as string;
 
     const result = await generateObject({
       model: openai("gpt-4.1-mini"),
       schema: recipesSchema,
       maxTokens: 1024,
-      system: `You are a professional chef. You return max 3 recipes in JSON format that match the schema. Do not include any extra text.
-
-            `,
+      system: `You are a professional ${selectedCuisine} chef. You return a maximum of 2 ${selectedCuisine} recipes written in English, in JSON format matching the schema. Do not include any extra text.`,
       messages: [
         {
           role: "user",
           content: [
             {
               type: "text",
-              text: `Based on the ingredients below give me 3 or less recipes. 
+              text: `Based on the ingredients below give me 2 or less ${selectedCuisine} recipes.
+                Remember the recipes have to be ${selectedCuisine}. you should not include any other cuisines.
                 It should be cooked using these ingredients.
                 
                 ${ingredients.join("\n")}`,

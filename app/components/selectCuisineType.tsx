@@ -1,14 +1,18 @@
 import { ScrollArea } from "./ui/scroll-area";
 import { Separator } from "./ui/separator";
 import { Label } from "./ui/label";
-import { useState } from "react";
 
-const SeletCuisineType = () => {
-  const [selectedCuisine, setSelectedCuisine] = useState<string | null>(null);
+type SeletCuisineTypeProps = {
+  setSelectedCuisine: React.Dispatch<React.SetStateAction<string | null>>;
+  selectedCuisine: string | null;
+};
 
+const SeletCuisineType = ({
+  setSelectedCuisine,
+  selectedCuisine,
+}: SeletCuisineTypeProps) => {
   const handleCuisineSelect = (cuisine: string) => {
     setSelectedCuisine(cuisine);
-    console.log(`Selected cuisine: ${cuisine}`);
   };
 
   const itemData = [

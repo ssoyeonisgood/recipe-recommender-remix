@@ -18,10 +18,12 @@ const AIResponse = ({
   recipes,
   loadingRecipes,
   ingredients,
+  selectedCuisine,
 }: {
   recipes: Recipe[];
   loadingRecipes: boolean;
   ingredients: string[];
+  selectedCuisine: string | null;
 }) => {
   if (loadingRecipes) {
     return (
@@ -88,9 +90,19 @@ const AIResponse = ({
         <DialogTitle>Recipes</DialogTitle>
         <FcIdea className="text-3xl" />
       </div>
-      <DialogDescription>
+      <DialogDescription className="text-sm">
+        {selectedCuisine === "" && (
+          <span>
+            You didn’t select a specific cuisine. We will show you random
+            recipes.
+            <br />
+          </span>
+        )}
         We found{" "}
-        <span className="text-red-600 font-semibold">{recipes.length}</span>{" "}
+        <span className="text-red-600 font-semibold">
+          {recipes.length}
+        </span>{" "}
+        <span className="font-semibold">{selectedCuisine || ""} </span>
         recipe{recipes.length !== 1 ? "s" : ""} based on your ingredients.
         <br />
         Try making one using the ingredients you provided!
