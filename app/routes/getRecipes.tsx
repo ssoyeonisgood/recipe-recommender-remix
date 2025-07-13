@@ -5,14 +5,14 @@ import { motion } from "framer-motion";
 
 const getRecipes: FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-b from-white to-blue-200">
+    <div className="flex h-screen flex-col items-center justify-center bg-gradient-to-b from-white to-blue-200">
       <Navigation logoImage="/logo2.png" textColor="text-black" />
-      <div className="flex flex-col items-center justify-center h-full w-4/5 mt-20">
+      <div className="flex h-full w-full flex-col items-center justify-center p-10 sm:mt-12 sm:p-1 xl:w-4/5 xl:p-20">
         <motion.h1
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="font-title text-7xl mb-6 text-blue-900"
+          className="mb-2 font-title text-3xl text-blue-900 sm:mb-2 sm:text-4xl md:mb-6 md:text-5xl xl:text-7xl"
         >
           Get Your Recipes
         </motion.h1>
@@ -21,7 +21,7 @@ const getRecipes: FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.7, ease: "easeOut" }}
-          className="text-2xl font-custom max-w-xl text-center"
+          className="mb-4 max-w-xl text-center font-custom text-base sm:mb-0 sm:text-lg md:text-2xl"
         >
           Upload your ingredients&apos; image and we&apos;ll recommend delicious
           recipes using AI!

@@ -12,12 +12,12 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="flex flex-row gap-10 p-20 items-center justify-center h-full bg-blue-950"
+      className="flex flex-col xl:flex-row gap-5 xl:gap-10 p-10 sm:p-14 ml:p-20 items-center justify-center h-full bg-blue-950"
     >
-      <div className="w-1/2 h-full flex items-center justify-center">
+      <div className="xl:w-1/2 xl:h-full flex items-center justify-center">
         <p
           ref={titleRef}
-          className="font-title text-6xl text-pink-400 font-bold flex flex-col items-center justify-center gap-8"
+          className="font-title text-4xl md:text-5xl xl:text-6xl text-pink-400 font-bold flex flex-col items-center justify-center gap-2 xl:gap-8"
         >
           Hello! This is
           <motion.span
@@ -26,29 +26,29 @@ const AboutSection = () => {
               isTitleInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0 }
             }
             transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
-            className="text-white text-8xl text-center"
+            className="text-white text-5xl md:text-7xl xl:text-8xl text-center"
           >
             Recipe Recommender,
           </motion.span>
           an AI web app.
         </p>
       </div>
-      <div className="w-1/2 h-full flex flex-col items-center justify-center relative">
+      <div className="xl:w-1/2 h-full gap-4 sm:gap-6 flex flex-col items-center relative overflow-auto">
         <div className="w-full relative">
           <img
             src="/sticker1.png"
             alt="sticker1"
-            className="w-40 z-10 relative top-0 left-0 rotate-[10deg] transform transition-transform duration-500 hover:rotate-[-10deg] hover:scale-105"
+            className="hidden xl:block w-40 z-10 relative top-0 left-0 rotate-[10deg] transform transition-transform duration-500 hover:rotate-[-10deg] hover:scale-105"
           />
         </div>
-        <p className="font-custom text-white text-2xl font-semibold z-10 relative mt-6">
+        <p className="font-custom text-white text-lg sm:text-2xl font-semibold z-10 relative">
           This app uses AI to recommend recipes based on the ingredients you
           provide. You can upload an image of your ingredients, and the AI will
           recognize them and suggest recipes that you can cook with those
           ingredients. It&apos;s a fun and interactive way to discover new
           recipes and make the most out of what you have in your kitchen!
-          <br />
-          <br />
+        </p>
+        <p className="font-custom text-white text-lg sm:text-2xl font-semibold">
           This web app is built using{" "}
           <span className="text-pink-500 font-bold">TypeScript</span>,{" "}
           <span className="text-pink-500 font-bold">Remix</span>, and the{" "}
@@ -58,15 +58,15 @@ const AboutSection = () => {
           a smooth user experience with powerful AI-driven recipe
           recommendations.
         </p>
-        <div className="w-full h-60 relative mt-5 flex flex-row gap-4">
-          <div className="w-3/5 flex flex-col mt-3 gap-6">
-            <p className="font-custom text-white text-2xl font-semibold">
+        <div className="w-full h-60 relative flex flex-row gap-4 justify-center">
+          <div className="lg:w-3/5 flex flex-col gap-3 sm:gap-6">
+            <p className="font-custom text-white text-lg sm:text-2xl font-semibold">
               Ready to try the Recipe Recommender?
             </p>
             <Link to="/getRecipes" className={buttonClass("bg-pink-600")}>
               Try it now!!
             </Link>
-            <p className="font-custom text-white text-2xl font-semibold">
+            <p className="font-custom text-white text-lg sm:text-2xl font-semibold">
               Do you want to see my code?
             </p>
             <a
@@ -78,16 +78,16 @@ const AboutSection = () => {
               Go to my repo
             </a>
           </div>
-          <div className="w-2/5 relative">
+          <div className="lg:w-2/5 relative">
             <img
               src="/sticker2.png"
               alt="sticker2"
-              className="w-40 absolute top-0 right-36 rotate-[-10deg] z-20"
+              className="hidden lg:block w-40 absolute top-0 right-36 rotate-[-10deg] z-20"
             />
             <img
               src="/sticker3.png"
               alt="sticker3"
-              className="w-40 absolute top-12 right-10 rotate-[12deg] z-30 transform transition-transform duration-500 hover:rotate-[-10deg] hover:scale-105"
+              className=" hidden lg:block w-40 absolute top-12 right-10 rotate-[12deg] z-30 transform transition-transform duration-500 hover:rotate-[-10deg] hover:scale-105"
             />
           </div>
         </div>

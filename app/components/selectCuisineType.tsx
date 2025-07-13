@@ -54,34 +54,48 @@ const SeletCuisineType = ({
     },
   ];
   return (
-    <div className="flex flex-col sm:w-1/5 sm:h-full h-[60%] gap-2">
-      <Label htmlFor="cuisine" className="font-custom text-lg font-semibold">
+    <div className="flex h-48 flex-col gap-2 sm:h-full sm:w-1/5">
+      <Label
+        htmlFor="cuisine"
+        className="font-custom text-base font-semibold sm:text-lg"
+      >
         Cuisine
       </Label>
-      <ScrollArea className="h-[430px] w-full rounded-md border-2 border-black p-4">
+      <ScrollArea className="w-full rounded-md border-2 border-black p-4 sm:h-[430px]">
         {itemData.map((item) => (
           <div key={item.title}>
+            {/* mobile*/}
             <button
               onClick={() => handleCuisineSelect(item.title)}
-              className="w-full"
+              className="block w-full rounded-md font-semibold text-black transition hover:bg-pink-100 sm:hidden"
+              aria-label={`Select ${item.title} cuisine`}
+            >
+              {item.title}
+            </button>
+
+            {/* desktop */}
+            <button
+              onClick={() => handleCuisineSelect(item.title)}
+              className="hidden w-full sm:block"
               aria-label={`Select ${item.title} cuisine`}
             >
               <img
                 src={item.img}
                 alt={item.title}
-                className="hover:opacity-75 w-full h-auto rounded-lg"
+                className="h-auto w-full rounded-lg hover:opacity-75"
               />
             </button>
-            <p className="font-custom font-semibold text-center">
+            <p className="hidden text-center font-custom font-semibold sm:block">
               {item.title}
             </p>
-            <Separator className="my-2 bg-black" />
+
+            <Separator className="my-1 bg-black sm:my-2" />
           </div>
         ))}
       </ScrollArea>
-      <div className="flex justify-between items-center mt-2">
+      <div className="flex items-center justify-between sm:mt-2">
         <Label htmlFor="cuisine">Selected Cuisine: </Label>
-        <span className="text-lg text-black font-semibold font-custom">
+        <span className="font-custom text-base font-semibold text-black sm:text-lg">
           {selectedCuisine || "None"}
         </span>
       </div>

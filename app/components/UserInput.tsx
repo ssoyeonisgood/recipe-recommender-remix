@@ -55,8 +55,8 @@ const UserInput = () => {
   };
 
   return (
-    <div className="h-full w-full flex flex-col sm:gap-5 gap-2 sm:p-10">
-      <div className="radial-repeating flex sm:flex-row flex-col sm:gap-10 gap-2 h-full border-8 p-4">
+    <div className="flex h-full w-full flex-col gap-4 sm:gap-5 sm:p-3 md:p-10">
+      <div className="radial-repeating flex h-full flex-col gap-2 overflow-auto border-8 p-4 sm:flex-row sm:gap-10">
         <UploadImage
           setIngredients={setIngredients}
           setLoadingBadges={setLoadingBadges}
@@ -71,17 +71,17 @@ const UserInput = () => {
           selectedCuisine={selectedCuisine}
         />
       </div>
-      <div className="flex justify-center items-center">
+      <div className="flex items-center justify-center">
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button
-              className="button-19 sm:w-60 w-full h-12"
+              className="button-19 h-12 w-full sm:w-60"
               onClick={onSearchClick}
             >
               Search
             </Button>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-3xl sm:h-[90%] w-full h-full">
+          <DialogContent className="h-full w-full sm:h-[90%] sm:max-w-3xl">
             <AIResponse
               recipes={recipes}
               loadingRecipes={loadingRecipes}

@@ -26,7 +26,7 @@ const UploadImage = ({
   };
 
   const onImageAnalyzeClick = async (
-    event: React.MouseEvent<HTMLButtonElement>
+    event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     setLoadingBadges(true);
     event.preventDefault();
@@ -49,7 +49,7 @@ const UploadImage = ({
         if (data.success) {
           console.log("File uploaded:", data.ingredientLabels);
           const ingredientLabels = data.ingredientLabels.map(
-            (label: { name: string }) => label.name
+            (label: { name: string }) => label.name,
           );
           setIngredients(ingredientLabels);
         }
@@ -62,8 +62,11 @@ const UploadImage = ({
   };
 
   return (
-    <div className="flex flex-col gap-2 sm:w-2/5 sm:h-full h-[60%]">
-      <Label htmlFor="picture" className="font-custom text-lg font-semibold">
+    <div className="flex flex-col gap-2 sm:h-full sm:w-2/5">
+      <Label
+        htmlFor="picture"
+        className="font-custom text-base font-semibold sm:text-lg"
+      >
         Picture
       </Label>
       <Input
@@ -71,15 +74,15 @@ const UploadImage = ({
         accept="image/*"
         id="picture"
         type="file"
-        className="border-black border-2 cursor-pointer hover:bg-black/10 "
+        className="cursor-pointer border-2 border-black hover:bg-black/10"
         onChange={handleImageChange}
       />
-      <div className="rounded-xl border-2 h-full border-black sm:p-4 p-1 flex flex-col gap-2 justify-center items-center text-5xl">
+      <div className="hidden h-full flex-col items-center justify-center gap-2 rounded-xl border-2 border-black p-1 text-5xl sm:flex sm:p-4">
         {selectedImage ? (
           <img
             src={selectedImage}
             alt="Selected"
-            className="w-auto sm:max-h-[350px] max-h-[190px] object-contain rounded-xl"
+            className="max-h-[190px] w-auto rounded-xl object-contain sm:max-h-[350px]"
           />
         ) : (
           <CiImageOn />

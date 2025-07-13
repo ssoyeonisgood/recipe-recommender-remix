@@ -8,12 +8,12 @@ const Navigation = ({
   textColor: string;
 }) => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-10 p-4 flex justify-between items-center">
+    <nav className="fixed left-0 right-0 top-0 z-10 flex items-center justify-between p-2 sm:p-4">
       <Link to="/">
-        <img src={logoImage} alt="Logo" className="h-10 w-auto" />
+        <img src={logoImage} alt="Logo" className="h-5 w-auto sm:h-7 md:h-10" />
       </Link>
       <div
-        className={`flex flex-row gap-10 ${textColor} font-title text-3xl mr-10`}
+        className={`flex flex-row gap-3 md:gap-10 ${textColor} mr-2 font-title text-lg sm:text-2xl md:mr-10 md:text-3xl`}
       >
         <Link to="/#about">
           <p>About</p>

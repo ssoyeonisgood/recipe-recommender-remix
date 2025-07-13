@@ -25,7 +25,7 @@ const BadgeBoard = ({
 
     if (ingredients.length === 0) {
       alert(
-        "AI has not recognized any ingredients yet. Please try again after image recognition."
+        "AI has not recognized any ingredients yet. Please try again after image recognition.",
       );
       return;
     }
@@ -44,16 +44,19 @@ const BadgeBoard = ({
     setManualInput("");
   };
   return (
-    <div className="flex flex-col gap-2 sm:w-2/5 sm:h-full h-[40%]">
-      <div className="h-full w-full flex flex-col gap-2">
-        <Label htmlFor="ingredients" className="text-lg font-semibold">
+    <div className="flex flex-col gap-2 sm:h-full sm:w-2/5">
+      <div className="flex h-full w-full flex-col gap-2">
+        <Label
+          htmlFor="ingredients"
+          className="font-custom text-base font-semibold sm:text-lg"
+        >
           Ingredients
         </Label>
         <div
           id="ingredients"
-          className=" bg-blue-300 rounded-xl p-4 overflow-auto flex flex-wrap gap-2 h-full w-full"
+          className="flex h-60 w-full flex-wrap gap-2 overflow-auto rounded-xl bg-blue-300 p-4 sm:h-full"
         >
-          <div className="flex flex-wrap items-start content-start gap-2 overflow-auto h-full w-full">
+          <div className="flex h-full w-full flex-wrap content-start items-start gap-2 overflow-auto">
             {loadingBadges ? (
               Array.from({ length: 8 }).map((_, index) => (
                 <Skeleton key={index} className="h-8 w-20" />
@@ -65,13 +68,13 @@ const BadgeBoard = ({
                   ingredientName={ingredient}
                   onRemove={() =>
                     setIngredients((prev) =>
-                      prev.filter((i) => i !== ingredient)
+                      prev.filter((i) => i !== ingredient),
                     )
                   }
                 />
               ))
             ) : (
-              <p className="text-gray-700 font-custom">
+              <p className="font-custom text-gray-700">
                 No ingredients recognized. Try uploading your image of
                 ingredients.
               </p>
