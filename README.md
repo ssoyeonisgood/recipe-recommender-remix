@@ -1,17 +1,48 @@
 # Recipe Recommender (Remix)
 
-An AI-powered recipe recommendation web app built with **Remix**, **React**, and **TypeScript**.  
-Users can generate recipe ideas based on a photo of ingredients you uploaded.
+An AI-powered recipe recommendation web application that generates meal ideas from uploaded ingredient photos.
+
+Built using Remix, React, and TypeScript, with a strong focus on rapid iteration and AI-assisted development.
 
 ---
 
-## Features
+## Overview
 
-- Ingredient-based recipe recommendations  
-- AI-powered recipe generation  
-- Fast server-side rendering with Remix  
-- Responsive UI with React + TypeScript  
-- Simple and intuitive input flow  
+This project was built to solve a simple real-world problem:
+“What can I cook with the ingredients I already have?”
+
+Users upload an image of ingredients, and the app uses AI to:
+
+Extract ingredient data from the image
+Generate relevant recipe suggestions
+Display results instantly in a clean UI
+
+---
+
+## AI-Assisted Development
+
+This project was built using a vibe coding workflow, leveraging AI tools to move faster and iterate efficiently.
+
+I actively used ChatGPT to improve both development speed and code quality:
+
+-  Accelerate UI development by quickly generating and refining component structures  
+- Design and refine **structured prompts** to ensure consistent and reliable AI-generated outputs  
+- Supported:
+    Rapid prototyping,
+    Code generation and refactoring,
+    Debugging and optimization
+
+The workflow focused on shipping features quickly, then iterating on UX, logic, and AI response quality through continuous refinement.
+
+---
+
+## Key Features
+
+- Image-based ingredient recognition
+- AI-generated recipe recommendations
+- Fast server-side rendering with Remix
+- Responsive and intuitive UI
+- Streamlined input → result flow
 
 ---
 
@@ -26,10 +57,19 @@ Users can generate recipe ideas based on a photo of ingredients you uploaded.
 
 ---
 
+## How It Works
+1. User uploads an image of ingredients
+2. Server processes the request via Remix
+3. AI extracts ingredient information
+4. AI generates recipe suggestions
+5. Results are rendered dynamically in the UI
+
+---
+
 ## Getting Started
 
 ```bash
-git clone https://github.com/your-username/recipe-recommender-remix.git
+git clone https://github.com/ssoyeonisgood/recipe-recommender-remix.git
 cd recipe-recommender-remix
 npm install
 ```
@@ -45,6 +85,3 @@ App runs on:
 ```
 http://localhost:3000
 ```
-
-## How it works
-User inputs an image of ingredients → Remix handles request →  AI extracts ingredients → AI generates recipes → results rendered in UI.
