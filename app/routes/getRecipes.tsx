@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const getRecipes: FC = () => {
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-gradient-to-b from-white to-blue-200">
-      <Navigation logoImage="/logo2.png" textColor="text-black" />
+      <Navigation />
       <div className="xxs:mt-18 xs:mt-10 xs:mb-5 xs:p-1 xxl:p-24 flex h-full w-full flex-col items-center p-10 sm:mt-12 sm:p-1 xl:mt-0 xl:w-4/5 xl:p-20">
         <motion.h1
           initial={{ opacity: 0, y: -40 }}

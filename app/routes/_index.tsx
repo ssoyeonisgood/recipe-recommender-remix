@@ -20,12 +20,14 @@ export interface Recipe {
 
 export default function Index() {
   return (
-    <main className="flex h-screen flex-col">
-      <div className="bg-[url('/plate.png')] bg-cover bg-center h-screen">
-        <Navigation logoImage="/logo.png" textColor="text-white" />
-        <HomePage />
-        <AboutSection />
+    <main className="flex flex-col">
+      <div className="flex min-h-screen flex-col bg-cover bg-center">
+        <Navigation />
+        <div className="flex min-h-0 flex-1 flex-col">
+          <HomePage />
+        </div>
       </div>
+      <AboutSection />
     </main>
   );
 }
