@@ -1,68 +1,87 @@
-# Welcome to Remix!
+# Recipe Recommender (Remix)
 
-- [Remix Docs](https://remix.run/docs)
-- [Netlify Functions Overview](https://docs.netlify.com/functions/overview)
+An AI-powered recipe recommendation web application that generates meal ideas from uploaded ingredient photos.
 
-## Netlify Setup
+Built using Remix, React, and TypeScript, with a strong focus on rapid iteration and AI-assisted development.
 
-1. Install the [Netlify CLI](https://docs.netlify.com/cli/get-started/):
+---
 
-```sh
-npm i -g netlify-cli
-```
+## Overview
 
-If you have previously installed the Netlify CLI, you should update it to the latest version:
+This project was built to solve a simple real-world problem:
+“What can I cook with the ingredients I already have?”
 
-```sh
-npm i -g netlify-cli@latest
-```
+Users upload an image of ingredients, and the app uses AI to:
 
-2. Sign up and log in to Netlify:
+Extract ingredient data from the image
+Generate relevant recipe suggestions
+Display results instantly in a clean UI
 
-```sh
-netlify login
-```
+---
 
-3. Create a new site:
+## AI-Assisted Development
 
-```sh
-netlify init
-```
+This project was built using a vibe coding workflow, leveraging AI tools to move faster and iterate efficiently.
 
-## Development
+I actively used ChatGPT to improve both development speed and code quality:
 
-Ensure all packages are installed by running:
+-  Accelerate UI development by quickly generating and refining component structures  
+- Design and refine **structured prompts** to ensure consistent and reliable AI-generated outputs  
+- Supported:
+    Rapid prototyping,
+    Code generation and refactoring,
+    Debugging and optimization
 
-```sh
+The workflow focused on shipping features quickly, then iterating on UX, logic, and AI response quality through continuous refinement.
+
+---
+
+## Key Features
+
+- Image-based ingredient recognition
+- AI-generated recipe recommendations
+- Fast server-side rendering with Remix
+- Responsive and intuitive UI
+- Streamlined input → result flow
+
+---
+
+## Tech Stack
+
+- Remix  
+- React  
+- TypeScript  
+- Tailwind CSS  
+- Vercel’s AI SDK.
+- Vercel (deployment)
+
+---
+
+## How It Works
+1. User uploads an image of ingredients
+2. Server processes the request via Remix
+3. AI extracts ingredient information
+4. AI generates recipe suggestions
+5. Results are rendered dynamically in the UI
+
+---
+
+## Getting Started
+
+```bash
+git clone https://github.com/ssoyeonisgood/recipe-recommender-remix.git
+cd recipe-recommender-remix
 npm install
 ```
-
-Run
-
-```sh
-netlify dev
+Create .env file:
 ```
-
-Open up [http://localhost:8888](http://localhost:8888), and you're ready to go!
-
-### Serve your site locally
-
-To serve your site locally in a production-like environment, run
-
-```sh
-netlify serve
+OPENAI_API_KEY=your_api_key_here
 ```
-
-Your site will be available at [http://localhost:8888](http://localhost:8888). Note that it will not auto-reload when you make changes.
-
-## Deployment
-
-There are two ways to deploy your app to Netlify, you can either link your app to your git repo and have it auto deploy changes to Netlify, or you can deploy your app manually. If you've followed the setup instructions already, all you need to do is run this:
-
-```sh
-# preview deployment
-netlify deploy --build
-
-# production deployment
-netlify deploy --build --prod
+Run development server:
+```
+npm run dev
+```
+App runs on:
+```
+http://localhost:3000
 ```
